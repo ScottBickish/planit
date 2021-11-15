@@ -9,7 +9,7 @@ class DbContext {
   Note = mongoose.model('Note', NoteSchema);
   Task = mongoose.model('Task', TaskSchema);
   Sprint = mongoose.model('Sprint', SprintSchema);
-  Projects = mongoose.model('Project', ProjectSchema);
+  Project = mongoose.model('Project', ProjectSchema);
   Values = mongoose.model('Value', ValueSchema);
   Account = mongoose.model('Account', AccountSchema);
   Profiles = mongoose.model('Profile', ProfileSchema, 'accounts');
