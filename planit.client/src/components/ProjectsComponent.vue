@@ -7,9 +7,20 @@
 
 
 <script>
+import { logger } from "../utils/Logger"
+import Pop from "../utils/Pop"
 export default {
   setup(){
-    return {}
+    return {
+      async createProject() {
+        try {
+          await projectsController.createProject()
+        } catch (error) {
+          logger.error(error)
+          Pop.toast("Something is not right!", 'error')
+        }
+      }
+    }
   }
 }
 </script>
