@@ -6,8 +6,8 @@ export class TasksController extends BaseController {
   constructor() {
     super('api/projects')
     this.router
-      .get('/:projectId/tasks', this.getTasks)
       .use(Auth0Provider.getAuthorizedUserInfo)
+      .get('/:projectId/tasks', this.getTasks)
       .post('/:projectId/tasks', this.create)
       .put('/:projectId/tasks/:taskId', this.edit)
       .delete('/:projectId/tasks/:taskId', this.removeTask)
