@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import { ProjectSchema } from './Project'
+
 const Schema = mongoose.Schema
 
 export const SprintSchema = new Schema({
