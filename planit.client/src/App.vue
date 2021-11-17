@@ -5,8 +5,8 @@
   <main class="site-font">
     <router-view />
   </main>
-  <footer>
-    <div class="bg-secondary gradient-text site-font text-center p-4">Made By Greg and Scott</div>
+  <footer class="bg-grey">
+    <div class="gradient-text site-font text-center p-4">Made By Greg and Scott</div>
   </footer>
 </template>
 

@@ -1,12 +1,11 @@
 <template>
-  <div class="d-flex justify-content-between">
-    <div v-if="account.id" class="row justify-content-end" id="">
+  <div class="row container-fluid" v-if="account.id">
+    <div class="" id="">
       <div class="col-3 m-4" id="edit-div">
         <button
           class="btn btn-outline-primary rounded px-4"
           data-bs-toggle="offcanvas"
-          href="#projects-offcanvas"
-        >
+          href="#projects-offcanvas">
           P
         </button>
       </div>
