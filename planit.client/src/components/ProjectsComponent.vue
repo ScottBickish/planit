@@ -18,12 +18,14 @@
             aria-label="Close"
           ></button>
         </div>
-        <div v-for="p in projects" :key="p.id" class="selectable">
-          {{ p.name }}
+        <div class="offcanvas-body container-fluid scrollbar-ripe-malinka">
+          <div v-for="p in projects" :key="p.id" class="selectable">
+            {{ p.name }}
+          </div>
         </div>
-        <div class="offcanvas-body container-fluid">
+        <div class="text-end">
           <button
-            class="btn rounded btn-primary mt-3"
+            class="btn rounded mx-3 my-2 gradient"
             data-bs-toggle="modal"
             data-bs-target="#ProjectForm"
             title="create-project"

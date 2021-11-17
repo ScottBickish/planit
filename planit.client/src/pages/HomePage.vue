@@ -1,6 +1,6 @@
 <template>
   <div class="row" v-if="!account.id">
-    <div class="text-center align-text-center">
+    <div class="text-center mt-5">
       <h1>Please Login</h1>
     </div>
   </div>
@@ -10,7 +10,7 @@
 
     <template #modal-body> <ProjectForm /> </template>
   </Modal>
-  <div class="row justify-content-center container-fluid">
+  <div class="row justify-content-center container-fluid" v-if="account.id">
     <div class="col-md-10 card elevation-2 mt-5 p-5">
       <div class="row align-items-center">
         <div class="col-md-6 mb-5">
