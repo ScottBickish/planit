@@ -65,6 +65,11 @@ form:invalid button[type="submit"] {
   font-family: 'Roboto', sans-serif;
 }
 
+.btn-outline-custom {
+    color: rgb(202, 0, 202)!important;
+    border-color: rgb(202, 0, 202)!important;
+}
+
 .gradient-text {
   background-color: #6c0070;
   background-image: linear-gradient(45deg, rgb(202, 0, 202) 0%, rgb(228, 75, 255) 100%);
