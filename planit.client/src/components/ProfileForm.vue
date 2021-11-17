@@ -56,7 +56,7 @@ export default {
           Pop.toast('account issue')
         }
       },
-      profile: computed(() => AppState.profile),
+
       account: computed(() => AppState.account),
     }
   }

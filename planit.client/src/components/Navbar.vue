@@ -86,9 +86,7 @@
   <Modal id="ProfileForm">
     <template #modal-title> Edit your profile here! </template>
 
-    <template #modal-body
-      ><Profile :profile="profile" /> <ProfileForm />
-    </template>
+    <template #modal-body><Profile /> <ProfileForm /> </template>
   </Modal>
 </template>
 

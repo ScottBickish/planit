@@ -15,15 +15,10 @@
 import { computed } from "@vue/reactivity"
 import { AppState } from "../AppState"
 export default {
-  props: {
-    profile: {
-      type: Object,
-      required: true,
-    },
-  },
+
   setup() {
     return {
-      profile: computed(() => AppState.profile),
+
       account: computed(() => AppState.account),
     }
   }
