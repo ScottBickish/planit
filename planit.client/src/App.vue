@@ -2,7 +2,7 @@
   <header>
     <Navbar />
   </header>
-  <main>
+  <main class="site-font">
     <router-view />
   </main>
   <footer>

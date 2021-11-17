@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">
+          <h5 class="modal-title my-3">
             <slot name="modal-title"> </slot>
           </h5>
           <button
@@ -13,7 +13,7 @@
             aria-label="Close"
           ></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body bg-body">
           <slot name="modal-body" />
         </div>
       </div>
