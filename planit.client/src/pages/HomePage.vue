@@ -82,7 +82,7 @@ import { projectsService } from "../services/ProjectsService"
 export default {
   // NOTE onmounted for getting account info 
   name: 'Home',
-  setup(props) {
+  setup() {
     return {
       projects: computed(() => AppState.projects),
       account: computed(() => AppState.account)

@@ -45,7 +45,7 @@
             <span
               style="font-size: 23px"
               class="mx-3 text-dark lighten-30 site-font gradient-text"
-              >{{ user.name }}</span
+              >{{ account.name }}</span
             >
           </div>
           <div
@@ -97,6 +97,7 @@ import { computed } from 'vue'
 export default {
   setup() {
     return {
+      account: computed(() => AppState.account),
       user: computed(() => AppState.user),
       async login() {
         AuthService.loginWithPopup()

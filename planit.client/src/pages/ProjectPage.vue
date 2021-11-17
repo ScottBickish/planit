@@ -25,7 +25,7 @@
 <script>
 import { computed } from "@vue/reactivity"
 import { AppState } from "../AppState"
-import { onMounted } from "@vue/runtime-core"
+import { onMounted, watchEffect } from "@vue/runtime-core"
 import { logger } from "../utils/Logger"
 import Pop from "../utils/Pop"
 import { projectsService } from "../services/ProjectsService"
@@ -33,7 +33,7 @@ import { useRoute } from "vue-router"
 export default {
   setup() { 
     const route = useRoute()
-    onMounted (async () => {
+    watchEffect (async () => {
       try {
         await projectsService.getProjectById(route.params.id)
       } catch (error) {
