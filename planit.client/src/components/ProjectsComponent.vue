@@ -20,7 +20,10 @@
         </div>
         <div class="offcanvas-body container-fluid scrollbar-ripe-malinka">
           <div v-for="p in projects" :key="p.id" class="selectable">
-            <router-link :to="{ name: 'ProjectPage', params: { id: p.id } }">
+            <router-link
+              :to="{ name: 'ProjectPage', params: { id: p.id } }"
+              @click="closeCanvas()"
+            >
               {{ p.name }}
             </router-link>
           </div>
