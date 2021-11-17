@@ -10,8 +10,8 @@
 
     <template #modal-body> <ProjectForm /> </template>
   </Modal>
-  <div class="row justify-content-center container-fluid" v-if="account.id">
-    <div class="col-md-10 card elevation-2 mt-5 p-5">
+  <div class="row justify-content-center" v-if="account.id">
+    <div class="col-md-10 card elevation-2 my-5 p-5">
       <div class="row align-items-center">
         <div class="col-md-6 mb-5">
           <h3 class="gradient-text">Projects</h3>
@@ -31,19 +31,19 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-4 my-2">
           <h5 class="gradient-text2">
             Name
             <hr />
           </h5>
         </div>
-        <div class="col-md-4">
+        <div class="col-4 my-2">
           <h5 class="gradient-text2">
             Members
             <hr />
           </h5>
         </div>
-        <div class="col-md-4">
+        <div class="col-4 my-2">
           <h5 class="gradient-text2">
             Started
             <hr />
@@ -51,19 +51,19 @@
         </div>
       </div>
       <div class="row" v-for="p in projects" :key="p.id">
-        <div class="col-md-4">
+        <div class="col-4 my-2">
           <h2>
             <router-link :to="{ name: 'ProjectPage', params: { id: p.id } }">
               {{ p.name }}
             </router-link>
           </h2>
         </div>
-        <div class="col-md-4">
+        <div class="col-4 my-2">
           <div>
             <img class="img-container" :src="p.creator.picture" alt="" />
           </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-3 my-2">
           <div>
             {{ new Date(p.creator.updatedAt).toDateString() }}
           </div>
