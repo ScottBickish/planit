@@ -19,13 +19,18 @@
           ></button>
         </div>
         <div class="offcanvas-body container-fluid scrollbar-ripe-malinka">
-          <div v-for="p in projects" :key="p.id" class="selectable">
-            <router-link
-              :to="{ name: 'ProjectPage', params: { id: p.id } }"
-              @click="closeCanvas()"
-            >
-              {{ p.name }}
-            </router-link>
+          <div class="row align-items-center" v-for="p in projects" :key="p.id">
+            <div class="me-auto col-8 selectable">
+              <router-link
+                :to="{ name: 'ProjectPage', params: { id: p.id } }"
+                @click="closeCanvas()"
+              >
+                {{ p.name }}
+              </router-link>
+            </div>
+            <div class="col-2 text-center">
+              <i class="mdi mdi-trash-can-outline mdi-24px selectable" @click="removeProject(p.id)"></i>
+            </div>
           </div>
         </div>
         <div class="text-end">
@@ -62,6 +67,16 @@ export default {
         const myOffcanvas = Offcanvas.getOrCreateInstance(document.getElementById('projects-offcanvas'))
         myOffcanvas.hide()
       },
+      async removeProject(id) {
+        try {
+          if(Pop.confirm("Are you sure you want to Delete your project?", 'confirm')){
+            await projectsService.removeProject(id)
+          }
+        } catch (error) {
+          logger.error(error)
+          Pop.toast("Somthing went wrong", 'error')
+        }
+      } ,
       projects: computed(() => AppState.projects)
     }
   }
