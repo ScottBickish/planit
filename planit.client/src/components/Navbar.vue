@@ -37,12 +37,6 @@
             id="authDropdown"
           >
             <span style="font-size: 23px;" class="mx-3 text-dark lighten-30 site-font gradient-text">{{ user.name }}</span>
-            <img
-              :src="user.picture"
-              alt="user photo"
-              height="40"
-              class="ms-3 img-container"
-            />
           </div>
           <div
             class="dropdown-menu p-0 list-group w-100"
@@ -62,6 +56,13 @@
             </div>
           </div>
         </div>
+        <span><img
+          :src="user.picture"
+          alt="user photo"
+          height="40"
+          class="ms-3 img-container"
+          />
+        </span>
       </span>
     </div>
   </nav>
