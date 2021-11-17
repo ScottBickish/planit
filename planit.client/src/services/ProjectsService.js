@@ -18,6 +18,10 @@ class ProjectsService {
     AppState.projects = res.data
   }
 
+  async getProjectById(id) {
+    const res = await api.get('api/projects/' + id)
+    AppState.activeProject = res.data
+  }
 }
 
 export const projectsService = new ProjectsService()

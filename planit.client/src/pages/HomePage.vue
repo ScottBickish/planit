@@ -80,16 +80,9 @@ import { logger } from "../utils/Logger"
 import Pop from "../utils/Pop"
 import { projectsService } from "../services/ProjectsService"
 export default {
+  // NOTE onmounted for getting account info 
   name: 'Home',
-  setup() {
-    // onMounted(async () => {
-    //   try {
-    //     await projectsService.getAllProjects()
-    //   } catch (error) {
-    //     logger.error(error)
-    //     Pop.toast("Something went wrong", 'error')
-    //   }
-    // })
+  setup(props) {
     return {
       projects: computed(() => AppState.projects),
       account: computed(() => AppState.account)
