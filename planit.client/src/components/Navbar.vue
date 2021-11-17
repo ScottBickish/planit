@@ -22,7 +22,7 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <span class="navbar-text ms-auto">
         <button
-          class="btn selectable text-dark lighten-30 text-uppercase my-2 my-lg-0"
+          class="btn selectable text-dark lighten-30 text-uppercase my-2 my-lg-0 site-font"
           @click="login"
           v-if="!user.isAuthenticated"
         >
@@ -36,12 +36,12 @@
             aria-expanded="false"
             id="authDropdown"
           >
-            <span class="mx-3 text-dark lighten-30">{{ user.name }}</span>
+            <span style="font-size: 23px;" class="mx-3 text-dark lighten-30 site-font gradient-text">{{ user.name }}</span>
             <img
               :src="user.picture"
               alt="user photo"
               height="40"
-              class="img-container"
+              class="ms-3 img-container"
             />
           </div>
           <div
