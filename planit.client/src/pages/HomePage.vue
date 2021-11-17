@@ -15,7 +15,7 @@
       <div class="row align-items-center">
         <div class="col-md-6 mb-5">
           <h3 class="gradient-text">Projects</h3>
-          <p>
+          <p style="font-size: 18px;">
             A list of all projects for - <b>{{ account.name }}</b>
           </p>
         </div>
