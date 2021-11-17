@@ -2,10 +2,8 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-light px-3 elevation-3">
     <router-link class="navbar-brand" :to="{ name: 'Home' }">
       <div class="d-flex flex-row align-items-center text-dark site-font">
-        <img src="../assets/img/PlanitLogo.PNG" alt="">
-        <h1 class="gradient-text mt-3">
-         PlanIt
-        </h1>
+        <img src="../assets/img/PlanitLogo.PNG" alt="" />
+        <h1 class="gradient-text mt-3">PlanIt</h1>
       </div>
     </router-link>
     <button
@@ -22,7 +20,15 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <span class="navbar-text ms-auto">
         <button
-          class="btn selectable text-dark lighten-30 text-uppercase my-2 my-lg-0 site-font"
+          class="
+            btn
+            selectable
+            text-dark
+            lighten-30
+            text-uppercase
+            my-2 my-lg-0
+            site-font
+          "
           @click="login"
           v-if="!user.isAuthenticated"
         >
@@ -36,7 +42,11 @@
             aria-expanded="false"
             id="authDropdown"
           >
-            <span style="font-size: 23px;" class="mx-3 text-dark lighten-30 site-font gradient-text">{{ user.name }}</span>
+            <span
+              style="font-size: 23px"
+              class="mx-3 text-dark lighten-30 site-font gradient-text"
+              >{{ user.name }}</span
+            >
           </div>
           <div
             class="dropdown-menu p-0 list-group w-100"
@@ -48,7 +58,11 @@
               </div>
             </router-link>
             <div
-              class="list-group-item list-group-item-action hoverable text-danger"
+              class="
+                list-group-item list-group-item-action
+                hoverable
+                text-danger
+              "
               @click="logout"
             >
               <i class="mdi mdi-logout"></i>
@@ -56,16 +70,26 @@
             </div>
           </div>
         </div>
-        <span><img
-          :src="user.picture"
-          alt="user photo"
-          height="40"
-          class="ms-3 img-container"
+        <span
+          ><img
+            :src="user.picture"
+            alt="user photo"
+            height="40"
+            class="ms-3 img-container selectable"
+            data-bs-toggle="modal"
+            data-bs-target="#ProfileForm"
           />
         </span>
       </span>
     </div>
   </nav>
+  <Modal id="ProfileForm">
+    <template #modal-title> Edit your profile here! </template>
+
+    <template #modal-body
+      ><Profile :profile="profile" /> <ProfileForm />
+    </template>
+  </Modal>
 </template>
 
 <script>
@@ -103,10 +127,10 @@ export default {
 a:hover {
   text-decoration: none;
 }
-.nav-link{
+.nav-link {
   text-transform: uppercase;
 }
-.navbar-nav .router-link-exact-active{
+.navbar-nav .router-link-exact-active {
   border-bottom: 2px solid var(--bs-success);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
