@@ -17,7 +17,7 @@
       <div class="row">
         <p>{{ activeProject.description }}</p>
       </div>
-      <div class="row text-align-center">
+      <div class="row align-items-center">
         <div class="col-8 my-5">
           <h3 class="gradient-text">Sprints</h3>
           <p>Group your tasks into sprints for over-arching collections for better organization.</p>
