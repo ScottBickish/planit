@@ -12,7 +12,9 @@
     </div>
     <div class="col text-center">
       <h1>{{ activeProject.name }}</h1>
+      <h6>{{ activeProject.description }}</h6>
     </div>
+    <!-- NOTE this is just the off canvas on the page  -->
     <ProjectsComponent />
   </div>
   <Modal id="ProjectForm">
@@ -20,6 +22,8 @@
 
     <template #modal-body> <ProjectForm /> </template>
   </Modal>
+
+  <!-- NOTE inject the sprint template here -->
 </template>
 
 
