@@ -1,9 +1,10 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-light px-3 elevation-3">
-    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-center text-dark site-font">
-        <h1 class="gradient-text">
-          PlanIt
+    <router-link class="navbar-brand" :to="{ name: 'Home' }">
+      <div class="d-flex flex-row align-items-center text-dark site-font">
+        <img src="../assets/img/PlanitLogo.PNG" alt="">
+        <h1 class="gradient-text mt-3">
+         PlanIt
         </h1>
       </div>
     </router-link>
@@ -19,14 +20,7 @@
       <span class="navbar-toggler-icon" />
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto">
-        <!-- <li>
-          <router-link :to="{ name: 'About' }" class="btn text-success lighten-30 selectable text-uppercase">
-            About
-          </router-link>
-        </li> -->
-      </ul>
-      <span class="navbar-text">
+      <span class="navbar-text ms-auto">
         <button
           class="btn selectable text-dark lighten-30 text-uppercase my-2 my-lg-0"
           @click="login"
