@@ -20,7 +20,9 @@
         </div>
         <div class="offcanvas-body container-fluid scrollbar-ripe-malinka">
           <div v-for="p in projects" :key="p.id" class="selectable">
-            {{ p.name }}
+            <router-link :to="{ name: 'ProjectPage', params: { id: p.id } }">
+              {{ p.name }}
+            </router-link>
           </div>
         </div>
         <div class="text-end">
