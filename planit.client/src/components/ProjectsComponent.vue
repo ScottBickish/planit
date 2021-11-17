@@ -51,7 +51,7 @@ import { AppState } from "../AppState"
 export default {
   // props: {projects: {type: Object, required: true}},
   setup() {
-    logger.log(AppState.projects)
+    // logger.log(AppState.projects)
     return {
       closeCanvas() {
         const myOffcanvas = Offcanvas.getOrCreateInstance(document.getElementById('projects-offcanvas'))

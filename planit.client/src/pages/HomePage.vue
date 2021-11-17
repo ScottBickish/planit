@@ -15,7 +15,7 @@
       <div class="row align-items-center">
         <div class="col-md-6 mb-5">
           <h3 class="gradient-text">Projects</h3>
-          <p style="font-size: 18px;">
+          <p style="font-size: 18px">
             A list of all projects for - <b>{{ account.name }}</b>
           </p>
         </div>
@@ -82,14 +82,14 @@ import { projectsService } from "../services/ProjectsService"
 export default {
   name: 'Home',
   setup() {
-    onMounted(async () => {
-      try {
-        await projectsService.getAllProjects()
-      } catch (error) {
-        logger.error(error)
-        Pop.toast("Something went wrong", 'error')
-      }
-    })
+    // onMounted(async () => {
+    //   try {
+    //     await projectsService.getAllProjects()
+    //   } catch (error) {
+    //     logger.error(error)
+    //     Pop.toast("Something went wrong", 'error')
+    //   }
+    // })
     return {
       projects: computed(() => AppState.projects),
       account: computed(() => AppState.account)

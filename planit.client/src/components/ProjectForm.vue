@@ -1,18 +1,25 @@
 <template>
-   <div class="row">
+  <div class="row">
     <form @submit.prevent="createProject()">
       <div class="col">
         <div class="row">
           <div class="col mt-3">
             <p class="m-0"><b>Name</b></p>
-          <input class="form-control mb-4 bg-lighter" type="text" name:="projectTitle" placeholder="Name..." v-model="project.name" /> 
+            <input class="form-control mb-4 bg-lighter" type="text"
+            name:="projectTitle" placeholder="Name..." v-model="project.name" />
           </div>
         </div>
         <div class="row">
           <div class="col">
             <p class="m-0"><b>Description</b></p>
-            <textarea style="resize: none;" class="form-control mb-5 bg-lighter" name="project-body" rows="5" placeholder="Description..." 
-             v-model="project.description">
+            <textarea
+              style="resize: none"
+              class="form-control mb-5 bg-lighter"
+              name="project-body"
+              rows="5"
+              placeholder="Description..."
+              v-model="project.description"
+            >
             </textarea>
           </div>
         </div>
@@ -22,7 +29,10 @@
           <button type="button" class="btn rounded bg-none ms-2 px-5">
             Cancel
           </button>
-          <button type="submit" class="btn rounded gradient ms-2 px-5 text-light">
+          <button
+            type="submit"
+            class="btn rounded gradient ms-2 px-5 text-light"
+          >
             Submit
           </button>
         </div>
@@ -33,21 +43,38 @@
 
 
 <script>
-import { ref } from "@vue/reactivity";
+import { computed, ref } from "@vue/reactivity";
 import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
 import { projectsService } from "../services/ProjectsService"
 import { Modal } from "bootstrap";
+import { useRoute } from "vue-router";
+import { watchEffect } from "@vue/runtime-core";
+import { router } from "../router";
+import { AppState } from "../AppState";
 export default {
-  setup(){
-    const project = ref ({})
+  setup() {
+    const route = useRoute()
+    // watchEffect(async () => {
+    //   try {
+    //     await projectsService.getProjectById(route.params.id);
+
+    //   } catch (error) {
+    //     logger.error(error)
+    //   }
+    // })
+    const project = ref({})
     return {
+      activeProject: computed(() => AppState.activeProject),
       project,
       async createProject() {
         try {
           await projectsService.createProject(project.value)
           Modal.getOrCreateInstance(document.getElementById("ProjectForm")).hide();
           project.value = {}
+          router.push({
+            name: 'ProjectPage', params: { id: AppState.activeProject.id }
+          })
         } catch (error) {
           logger.error(error)
           Pop.toast("Something is not right", 'error')
