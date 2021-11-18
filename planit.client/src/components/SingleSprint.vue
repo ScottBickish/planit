@@ -15,7 +15,7 @@
         <!-- {{tasks.weight}} -->
         <i class="mdi mdi-weight mdi-48px mb-4 ms-5 gradient-text2"></i>
       </div>
-      <div class="col-2 text-end">
+      <div class="col-md-2 text-end">
         <button
           style="font-size: 15px"
           class="btn rounded btn-outline-custom gradient-text px-4"
