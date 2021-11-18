@@ -14,7 +14,7 @@
         <!-- NOTE tasks from Appstate computed -->
         <!-- {{tasks.weight}} -->
         <!-- {{task.weight}} -->
-        {{task.weight}}
+        {{ totalWeight }}
         <i class="mdi mdi-weight mdi-48px mb-4 ms-5 gradient-text2"></i>
       </div>
       <div class="col-md-2 text-end">
@@ -85,6 +85,16 @@ export default {
       },
       project: computed(() => AppState.activeProject),
       tasks: computed(() => AppState.tasks.filter(t => t.sprintId == props.sprint.id)),
+      totalWeight: computed(() => {
+        let weight = 0
+        AppState.tasks.forEach(t => {
+          if (t.sprintId == props.sprint.id) {
+            weight += t.weight
+          }
+
+        })
+        return weight
+      }),
       setActiveSprint(sprint) {
         AppState.activeSprintId = sprint.id
       }

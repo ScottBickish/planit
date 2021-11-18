@@ -83,8 +83,8 @@ export default {
       try {
         if (route.params.id) {
           await projectsService.getProjectById(route.params.id)
+          await tasksService.getTasksByProjectId(route.params.id)
         }
-        await tasksService.getTasksByProjectId(route.params.id)
       } catch (error) {
         logger.error(error)
         Pop.toast("Something went wrong", 'error')
