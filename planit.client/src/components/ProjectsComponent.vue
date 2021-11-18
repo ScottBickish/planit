@@ -28,8 +28,11 @@
                 {{ p.name }}
               </router-link>
             </div>
-            <div class="col-2 text-center">
-              <i class="mdi mdi-trash-can-outline mdi-24px selectable" @click="removeProject(p.id)"></i>
+            <div class="col-2 text-center" v-if="account.id === p.creatorId">
+              <i
+                class="mdi mdi-trash-can-outline mdi-24px selectable"
+                @click="removeProject(p.id)"
+              ></i>
             </div>
           </div>
         </div>
@@ -58,10 +61,12 @@ import Pop from "../utils/Pop"
 import { Offcanvas } from "bootstrap"
 import { computed } from "@vue/reactivity"
 import { AppState } from "../AppState"
+import { useRouter } from "vue-router"
 export default {
   // props: {projects: {type: Object, required: true}},
   setup() {
     // logger.log(AppState.projects)
+    const router = useRouter()
     return {
       closeCanvas() {
         const myOffcanvas = Offcanvas.getOrCreateInstance(document.getElementById('projects-offcanvas'))
@@ -69,15 +74,17 @@ export default {
       },
       async removeProject(id) {
         try {
-          if(Pop.confirm("Are you sure you want to Delete your project?", 'confirm')){
+          if (await Pop.confirm("Are you sure you want to Delete your project?", 'confirm')) {
             await projectsService.removeProject(id)
+            router.push({ name: 'Home' })
           }
         } catch (error) {
           logger.error(error)
           Pop.toast("Somthing went wrong", 'error')
         }
-      } ,
-      projects: computed(() => AppState.projects)
+      },
+      projects: computed(() => AppState.projects),
+      account: computed(() => AppState.account)
     }
   }
 }
