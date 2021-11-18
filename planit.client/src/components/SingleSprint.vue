@@ -43,6 +43,7 @@
         :key="task.id"
       >
         <SingleTask :task="task" />
+      </div>
         <div class="row">
           <div class="col text-end text-danger">
             Delete S{{ index + 1 }}
@@ -52,7 +53,6 @@
             ></i>
           </div>
         </div>
-      </div>
     </div>
   </div>
 </template>

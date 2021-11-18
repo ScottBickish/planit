@@ -9,7 +9,13 @@
     ></i>
     </div>
   <div class="row">
-    <p><span>WEIGHT</span> {{ task.weight }}</p>
+    <div class="col-1">
+      <p> Nct <i class="mdi mdi-comment-text-multiple-outline mdi-24px gradient-text selectable" data-bs-toggle="offcanvas"
+        href="#notes-offcanvas"></i></p>
+    </div>
+    <div class="col-1">
+      <p>{{ task.weight }} <i class="mdi mdi-weight mdi-24px gradient-text2"></i></p>
+    </div>
   </div>
   </div>
 </template>

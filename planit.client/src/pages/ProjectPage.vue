@@ -47,6 +47,7 @@
         <SingleSprint :sprint="sprint" :index="index" />
       </div>
       <ProjectsComponent />
+      <NotesComponent />
     </div>
   </div>
   <Modal id="ProjectForm">
