@@ -55,14 +55,7 @@ import { AppState } from "../AppState";
 export default {
   setup() {
     const route = useRoute()
-    // watchEffect(async () => {
-    //   try {
-    //     await projectsService.getProjectById(route.params.id);
 
-    //   } catch (error) {
-    //     logger.error(error)
-    //   }
-    // })
     const project = ref({})
     return {
       activeProject: computed(() => AppState.activeProject),

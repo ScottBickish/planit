@@ -76,9 +76,7 @@
 <script>
 import { AppState } from "../AppState"
 import { computed, onMounted } from "@vue/runtime-core"
-import { logger } from "../utils/Logger"
-import Pop from "../utils/Pop"
-import { projectsService } from "../services/ProjectsService"
+
 export default {
   // NOTE onmounted for getting account info 
   name: 'Home',

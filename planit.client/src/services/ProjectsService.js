@@ -19,6 +19,7 @@ class ProjectsService {
   }
 
   async getProjectById(id) {
+    // logger.log(console.trace())
     const res = await api.get('api/projects/' + id)
     AppState.activeProject = res.data
   }
