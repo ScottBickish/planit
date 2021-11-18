@@ -10,7 +10,7 @@
         P
       </button>
     </div>
-    <div class="col-md-10 my-4">
+    <div class="col-md-9 my-4">
       <div class="row align-items-center">
         <h1 style="font-size: 60px;" >{{ activeProject.name }}</h1>
       </div>
@@ -35,7 +35,41 @@
         </div>
       </div>
       <div class="row">
-
+        <div class="col card-sprints rounded p-2">
+          <div class="row align-items-center">
+            <div class="col-6 d-flex align-items-center">
+              <i class="mdi mdi-rhombus-outline mdi-48px me-3 gradient-text2"></i>
+              <h4 class="me-5 selectable" data-bs-toggle="collapse" data-bs-target='#sprint-drawer'>
+                <!-- NOTE sprints from AppState computed -->
+                <!-- {{sprint.name}} -->
+                Sprint Name
+              </h4>
+              <!-- NOTE tasks from Appstate computed -->
+              <!-- {{tasks.weight}} -->
+              <i class="mdi mdi-weight mdi-48px mb-4 ms-5 gradient-text2"></i>
+            </div>
+            <div class="col-2 text-end">
+              <button
+                style="font-size: 15px;"
+                class="btn rounded btn-outline-custom gradient-text px-4"
+                data-bs-toggle="modal"
+                data-bs-target="#SprintForm"
+                title="add-task">
+              Add Task <i class="ms-2 mdi mdi-plus-thick mdi-16px"></i>
+            </button>
+            </div>
+            <div class="col-4 text-end px-5">
+              <h4>
+                <!-- NOTE need tasks in AppState and computed -->
+                <!-- {{tasks.isCompleted.length}} / {{tasks.length}} -->
+                0/0 Tasks Complete
+              </h4>
+            </div>
+          </div>
+        </div>
+        <div class="collapse card-sprints" id="sprint-drawer" data-bs-toggle="collapse">
+        
+      </div>
       </div>
     </div>
     <!-- NOTE this is just the off canvas on the page  -->
@@ -64,7 +98,9 @@ export default {
     const route = useRoute()
     watchEffect(async () => {
       try {
+        if(route.params.id) {
         await projectsService.getProjectById(route.params.id)
+        }
       } catch (error) {
         logger.error(error)
         Pop.toast("Something went wrong", 'error')
