@@ -33,9 +33,6 @@ import { AppState } from "../AppState"
 import { Modal } from "bootstrap"
 import { useRoute } from "vue-router"
 export default {
-  // props: {
-  //   sprintId: String,
-  // },
 
   setup(props) {
     let activeSprintId = computed(() => AppState.activeSprintId)

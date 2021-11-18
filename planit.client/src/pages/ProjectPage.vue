@@ -1,5 +1,5 @@
 <template>
-  <div class="row container-fluid ps-0">
+  <div class="row ps-0">
     <div class="col-2 mt-3 ms-0 p-0" id="edit-div">
       <button
         class="btn gradient text-light px-5"
@@ -45,21 +45,9 @@
       >
         <!-- NOTE inject single sprint here -->
         <SingleSprint :sprint="sprint" :index="index" />
-
-        <div
-          class="collapse card-sprints"
-          id="sprint-drawer"
-          data-bs-toggle="collapse"
-        ></div>
-        <Modal id="TaskForm">
-          <template #modal-title> Create Task </template>
-
-          <template #modal-body> <TaskForm :sprintId="sprint.id" /> </template>
-        </Modal>
       </div>
+      <ProjectsComponent />
     </div>
-    <!-- NOTE this is just the off canvas on the page  -->
-    <ProjectsComponent />
   </div>
   <Modal id="ProjectForm">
     <template #modal-title> Create Project! </template>
@@ -70,6 +58,11 @@
     <template #modal-title> Create Sprint </template>
 
     <template #modal-body> <SprintsForm /> </template>
+  </Modal>
+  <Modal id="TaskForm">
+    <template #modal-title> Create Task </template>
+
+    <template #modal-body> <TaskForm /> </template>
   </Modal>
 </template>
 
