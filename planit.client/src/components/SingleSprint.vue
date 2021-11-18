@@ -13,6 +13,8 @@
         </h4>
         <!-- NOTE tasks from Appstate computed -->
         <!-- {{tasks.weight}} -->
+        <!-- {{task.weight}} -->
+        {{task.weight}}
         <i class="mdi mdi-weight mdi-48px mb-4 ms-5 gradient-text2"></i>
       </div>
       <div class="col-md-2 text-end">
