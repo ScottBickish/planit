@@ -18,14 +18,14 @@
         <p>{{ activeProject.description }}</p>
       </div>
       <div class="row align-items-center">
-        <div class="col-8 my-5">
+        <div class="col-md-8 my-5">
           <h3 class="gradient-text">Sprints</h3>
           <p>
             Group your tasks into sprints for over-arching collections for
             better organization.
           </p>
         </div>
-        <div class="col-4 text-end">
+        <div class="col-md-4 text-end">
           <button
             style="font-size: 18px"
             class="btn btn-lg rounded btn-outline-custom gradient-text px-5"
