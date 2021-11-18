@@ -6,7 +6,7 @@
         <h4
           class="me-5 selectable"
           data-bs-toggle="collapse"
-          data-bs-target="#sprint-drawer"
+          :data-bs-target="'#s' + sprint.id"
         >
           Sprint # {{ index + 1 }}
         </h4>
@@ -39,7 +39,7 @@
         </h4>
       </div>
       <div
-        id="sprint-drawer"
+        :id="'s' + sprint.id"
         class="collapse"
         v-for="task in tasks"
         :key="task.id"
