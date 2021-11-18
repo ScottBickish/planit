@@ -2,6 +2,14 @@
   <div class="row" v-if="note.creator">
     <div class="col-md-10 card-sprints">
       <div class="row">
+        <div class="col text-end">
+          <i
+          class="mdi mdi-trash-can-outline mdi-24px selectable"
+          @click="removeNote(t.id)"
+          ></i>
+        </div>
+      </div>
+      <div class="row">
         <div class="col">
           <img :src="note.creator.picture" alt="" />
           {{ note.creator.name }}
