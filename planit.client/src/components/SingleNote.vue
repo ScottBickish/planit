@@ -3,14 +3,14 @@
     <div class="col-md-10 card-sprints">
       <div class="row">
         <div class="col">
-          <img :src="note.creator.picture" alt="">
-          {{note.creator.name}}
+          <img :src="note.creator.picture" alt="" />
+          {{ note.creator.name }}
         </div>
       </div>
       <div class="row">
         <div class="col">
           <h6>
-            {{note.body}}
+            {{ note.body }}
           </h6>
         </div>
       </div>
@@ -23,10 +23,11 @@
 import { computed } from "@vue/reactivity"
 import { AppState } from "../AppState"
 export default {
-  props: {note: Object},
-  setup() {
+  props: { note: Object },
+  setup(props) {
     return {
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
+
     }
   }
 }

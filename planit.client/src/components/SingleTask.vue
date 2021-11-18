@@ -1,22 +1,43 @@
 <template>
   <div class="row m-2 border border-dark p-2 align-items-center">
     <div class="col d-flex justify-content-start align-items-center">
-      <input v-model="task.isComplete" class="form-check-input me-4" type="checkbox" name="" id="chkbx" @click="toggleCheckbox()">
+      <input
+        v-model="task.isComplete"
+        class="form-check-input me-4"
+        type="checkbox"
+        name=""
+        id="chkbx"
+        @click="toggleCheckbox()"
+      />
       <h5 class="m-0">{{ task.name }}</h5>
       <i
-      class="mdi mdi-trash-can-outline mdi-24px selectable ms-4"
-      @click="removeTask(task)"
-    ></i>
+        class="mdi mdi-trash-can-outline mdi-24px selectable ms-4"
+        @click="removeTask(task)"
+      ></i>
     </div>
-  <div class="row">
-    <div class="col-1">
-      <p> Nct <i class="mdi mdi-comment-text-multiple-outline mdi-24px gradient-text selectable" data-bs-toggle="offcanvas"
-        href="#notes-offcanvas"></i></p>
+    <div class="row">
+      <div class="col-1">
+        <p>
+          Nct
+          <i
+            class="
+              mdi mdi-comment-text-multiple-outline mdi-24px
+              gradient-text
+              selectable
+            "
+            data-bs-toggle="offcanvas"
+            href="#notes-offcanvas"
+            @click="setactiveTask()"
+          ></i>
+        </p>
+      </div>
+      <div class="col-1">
+        <p>
+          {{ task.weight }}
+          <i class="mdi mdi-weight mdi-24px gradient-text2"></i>
+        </p>
+      </div>
     </div>
-    <div class="col-1">
-      <p>{{ task.weight }} <i class="mdi mdi-weight mdi-24px gradient-text2"></i></p>
-    </div>
-  </div>
   </div>
 </template>
 
@@ -35,6 +56,9 @@ export default {
   setup(props) {
     const route = useRoute()
     return {
+      setactiveTask() {
+        AppState.activeTaskId = props.task.id
+      },
       route,
       project: computed(() => AppState.projects),
       async toggleCheckbox() {

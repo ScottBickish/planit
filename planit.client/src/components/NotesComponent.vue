@@ -22,15 +22,26 @@
         </div>
         <div class="offcanvas-body container-fluid scrollbar-ripe-malinka">
           <div class="row align-items-center">
-            <div style="display: inline;" class="col">
+            <div style="display: inline" class="col">
               <form class="" @submit.prevent="createNote()">
-                <input v-model="note.body" class="form-control" type="text" id="note" placeholder="Say something..."><button class="gradient rounded" @click="closeCanvas()"><i class="mdi mdi-send text-light"></i>
+                <input
+                  v-model="note.body"
+                  class="form-control"
+                  type="text"
+                  id="note"
+                  placeholder="Say something..."
+                /><button
+                  type="submit"
+                  class="gradient rounded"
+                  @click="closeCanvas()"
+                >
+                  <i class="mdi mdi-send text-light"></i>
                 </button>
               </form>
             </div>
           </div>
           <div v-for="note in notes" :key="note.id">
-            <SingleNote :note = "note"/>
+            <SingleNote :note="note" />
           </div>
         </div>
       </div>
@@ -47,15 +58,20 @@ import { notesService } from "../services/NotesService"
 import { AppState } from "../AppState"
 import { Offcanvas } from "bootstrap"
 export default {
+  props: {
+    note: Object
+  },
 
-  setup() {
+  setup(props) {
     const route = useRoute()
     const note = ref({})
     return {
       route,
       note,
+      activeTaskId: computed(() => AppState.activeTaskId),
       async createNote() {
         try {
+          note.value.taskId = AppState.activeTaskId
           await notesService.createNote(route.params.id, note.value)
           note.value = {}
         } catch (error) {
@@ -67,7 +83,7 @@ export default {
         const myOffcanvas = Offcanvas.getOrCreateInstance(document.getElementById('notes-offcanvas'))
         myOffcanvas.hide()
       },
-      notes: computed(() => AppState.notes)
+
     }
   }
 }
