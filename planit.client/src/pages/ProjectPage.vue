@@ -1,5 +1,5 @@
 <template>
-  <div class="row container-fluid ps-0">
+  <div class="row ps-0">
     <div class="col-2 mt-3 ms-0 p-0" id="edit-div">
       <button
         class="btn gradient text-light px-5"
@@ -48,7 +48,7 @@
               <!-- {{tasks.weight}} -->
               <i class="mdi mdi-weight mdi-48px mb-4 ms-5 gradient-text2"></i>
             </div>
-            <div class="col-2 text-end">
+            <div class="col-md-2 text-end">
               <button
                 style="font-size: 15px;"
                 class="btn rounded btn-outline-custom gradient-text px-4"
@@ -67,6 +67,7 @@
             </div>
           </div>
         </div>
+        <!-- NOTE Sprints Drawer -->
         <div class="collapse card-sprints" id="sprint-drawer" data-bs-toggle="collapse">
         
       </div>
