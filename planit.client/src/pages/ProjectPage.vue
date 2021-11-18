@@ -1,5 +1,5 @@
 <template>
-  <div class="row ps-0">
+  <div class="row ps-0 container-fluid">
     <div class="col-2 mt-3 ms-0 p-0" id="edit-div">
       <button
         class="btn gradient text-light px-5"
