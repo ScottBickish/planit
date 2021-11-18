@@ -45,6 +45,7 @@ import { logger } from "../utils/Logger"
 import Pop from "../utils/Pop"
 import { notesService } from "../services/NotesService"
 import { AppState } from "../AppState"
+import { Offcanvas } from "bootstrap"
 export default {
 
   setup() {
