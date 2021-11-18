@@ -1,6 +1,6 @@
 <template>
   <div class="Sprint-component">
-    <form @submit.prevent="createSprint(route.params.id)">
+    <form @submit.prevent="createSprint(id)">
       <label>Sprint Name</label>
       <input
         type="text"
@@ -22,12 +22,16 @@ import { AppState } from "../AppState"
 import { watchEffect } from "@vue/runtime-core"
 import { logger } from "../utils/Logger"
 import { sprintsService } from "../services/SprintsService"
+import { useRoute } from "vue-router"
 export default {
   setup() {
+    const route = useRoute()
     watchEffect(async () => {
       try {
+        if (route.params.id) {
+          await sprintsService.getSprints(route.params.id)
+        }
         await sprintsService.createSprint(route.params.id)
-        await sprintsService.getSprints(route.params.id)
       } catch (error) {
         logger.error(error)
       }
