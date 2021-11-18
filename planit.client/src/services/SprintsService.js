@@ -3,9 +3,9 @@ import { logger } from "../utils/Logger"
 import { api } from "./AxiosService"
 
 class SprintsService {
-async createSprint(id){
-  const res = await api.post(`api/projects/${id}/sprints`)
-  logger.log(res.data)
+async createSprint(id, sprint){
+  const res = await api.post(`api/projects/${id}/sprints`, sprint)
+  // logger.log(res.data, sprint)
   AppState.sprints = [...AppState.sprints, res.data]
 }
 async getSprints(id){
@@ -15,6 +15,7 @@ async getSprints(id){
 async removeSprint(pId, id){
   await api.delete(`api/projects/${pId}/sprints/${id}`)
   AppState.sprints = AppState.sprints.filter(s => s.id !== AppState.sprints.id)
+  this.getSprints(pId)
 }
 
 }

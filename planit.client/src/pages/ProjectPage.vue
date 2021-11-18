@@ -30,58 +30,32 @@
             style="font-size: 18px"
             class="btn btn-lg rounded btn-outline-custom gradient-text px-5"
             data-bs-toggle="modal"
-            data-bs-target="#SprintsComponent"
+            data-bs-target="#SprintsForm"
             title="create-sprint"
           >
             Add Sprint
           </button>
         </div>
       </div>
-      <div class="row">
-        <div class="col card-sprints rounded p-2">
-          <div class="row align-items-center">
-            <div class="col-6 d-flex align-items-center">
-              <i
-                class="mdi mdi-rhombus-outline mdi-48px me-3 gradient-text2"
-              ></i>
-              <h4
-                class="me-5 selectable"
-                data-bs-toggle="collapse"
-                data-bs-target="#sprint-drawer"
-              >
-                <!-- NOTE sprints from AppState computed -->
-                <!-- {{sprint.name}} -->
-                Sprint Name
-              </h4>
-              <!-- NOTE tasks from Appstate computed -->
-              <!-- {{tasks.weight}} -->
-              <i class="mdi mdi-weight mdi-48px mb-4 ms-5 gradient-text2"></i>
-            </div>
-            <div class="col-2 text-end">
-              <button
-                style="font-size: 15px"
-                class="btn rounded btn-outline-custom gradient-text px-4"
-                data-bs-toggle="modal"
-                data-bs-target="#SprintsComponent"
-                title="add-task"
-              >
-                Add Task <i class="ms-2 mdi mdi-plus-thick mdi-16px"></i>
-              </button>
-            </div>
-            <div class="col-4 text-end px-5">
-              <h4>
-                <!-- NOTE need tasks in AppState and computed -->
-                <!-- {{tasks.isCompleted.length}} / {{tasks.length}} -->
-                0/0 Tasks Complete
-              </h4>
-            </div>
-          </div>
-        </div>
+      <div
+        class="row"
+        v-for="(sprint, index) in sprints"
+        :key="sprint.id"
+        :index="index"
+      >
+        <!-- NOTE inject single sprint here -->
+        <SingleSprint :sprint="sprint" :index="index" />
+
         <div
           class="collapse card-sprints"
           id="sprint-drawer"
           data-bs-toggle="collapse"
         ></div>
+        <Modal id="TaskForm">
+          <template #modal-title> Create Task </template>
+
+          <template #modal-body> <TaskForm :sprintId="sprint.id" /> </template>
+        </Modal>
       </div>
     </div>
     <!-- NOTE this is just the off canvas on the page  -->
@@ -92,12 +66,11 @@
 
     <template #modal-body> <ProjectForm /> </template>
   </Modal>
-  <Modal id="SprintsComponent">
+  <Modal id="SprintsForm">
     <template #modal-title> Create Sprint </template>
 
-    <template #modal-body> <SprintsComponent /> </template>
+    <template #modal-body> <SprintsForm /> </template>
   </Modal>
-  <!-- NOTE inject the sprint template here -->
 </template>
 
 
@@ -109,6 +82,7 @@ import { logger } from "../utils/Logger"
 import Pop from "../utils/Pop"
 import { projectsService } from "../services/ProjectsService"
 import { useRoute } from "vue-router"
+import { tasksService } from "../services/TasksService"
 export default {
   setup() {
     const route = useRoute()
@@ -117,6 +91,7 @@ export default {
         if (route.params.id) {
           await projectsService.getProjectById(route.params.id)
         }
+        await tasksService.getTasksByProjectId(route.params.id)
       } catch (error) {
         logger.error(error)
         Pop.toast("Something went wrong", 'error')
@@ -125,7 +100,8 @@ export default {
     return {
       projects: computed(() => AppState.projects),
       activeProject: computed(() => AppState.activeProject),
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
+      sprints: computed(() => AppState.sprints)
     }
   }
 }

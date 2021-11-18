@@ -1,6 +1,6 @@
 <template>
-  <div class="Sprint-component">
-    <form @submit.prevent="createSprint(id)">
+  <div class="Sprint-form-component">
+    <form @submit.prevent="createSprint()">
       <label>Sprint Name</label>
       <input
         type="text"
@@ -17,28 +17,40 @@
 
 
 <script>
-import { computed } from "@vue/reactivity"
+import { computed, ref } from "@vue/reactivity"
 import { AppState } from "../AppState"
 import { watchEffect } from "@vue/runtime-core"
 import { logger } from "../utils/Logger"
 import { sprintsService } from "../services/SprintsService"
 import { useRoute } from "vue-router"
+import { Modal } from "bootstrap"
 export default {
   setup() {
+    const sprint = ref({})
     const route = useRoute()
     watchEffect(async () => {
       try {
         if (route.params.id) {
           await sprintsService.getSprints(route.params.id)
         }
-        await sprintsService.createSprint(route.params.id)
       } catch (error) {
         logger.error(error)
       }
     })
     return {
-      sprint: computed(() => AppState.sprints),
-      project: computed(() => AppState.activeProjects)
+      sprint,
+      async createSprint() {
+        try {
+          logger.log(sprint.value)
+          await sprintsService.createSprint(route.params.id, sprint.value)
+          Modal.getOrCreateInstance(
+            document.getElementById("SprintsForm")
+          ).hide();
+          sprint.value = {}
+        } catch (error) {
+          logger.error(error)
+        }
+      },
     }
   }
 }
