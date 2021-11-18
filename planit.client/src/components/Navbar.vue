@@ -70,8 +70,7 @@
             </div>
           </div>
         </div>
-        <span
-          ><img
+        <img
             :src="user.picture"
             alt="user photo"
             height="40"
@@ -79,7 +78,6 @@
             data-bs-toggle="modal"
             data-bs-target="#ProfileForm"
           />
-        </span>
       </span>
     </div>
   </nav>
