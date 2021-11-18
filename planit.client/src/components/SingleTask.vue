@@ -1,26 +1,44 @@
 <template>
-  <div class="m-2 border border-dark p-2">
-    <p><span> NAME:</span> {{ task.name }}</p>
-
-    <p><span>WEIGHT</span> {{ task.weight }}</p>
-    <i
-      class="mdi mdi-trash-can-outline mdi-24px selectable"
+  <div class="row m-2 border border-dark p-2 align-items-center">
+    <div class="col d-flex justify-content-start align-items-center">
+      <input v-model="task.isComplete" class="form-check-input me-4" type="checkbox" name="" id="chkbx" @click="toggleCheckbox()">
+      <h5 class="m-0">{{ task.name }}</h5>
+      <i
+      class="mdi mdi-trash-can-outline mdi-24px selectable ms-4"
       @click="removeTask(task)"
     ></i>
+    </div>
+  <div class="row">
+    <p><span>WEIGHT</span> {{ task.weight }}</p>
+  </div>
   </div>
 </template>
 
 
 <script>
+import { computed } from "@vue/reactivity"
 import { tasksService } from "../services/TasksService"
 import { logger } from "../utils/Logger"
 import Pop from "../utils/Pop"
+import { AppState } from "../AppState"
+import { useRoute } from "vue-router"
 export default {
   props: {
     task: Object
   },
-  setup() {
+  setup(props) {
+    const route = useRoute()
     return {
+      route,
+      project: computed(() => AppState.projects),
+      async toggleCheckbox() {
+        try {
+          await tasksService.toggleCheckbox(route.params.id, props.task)
+        } catch (error) {
+          logger.error(error)
+          Pop.toast("Somthing went wrong!", 'error')
+        }
+      },
       async removeTask(task) {
         try {
           if (await Pop.confirm('Are you sure you want to delete this task?')) {

@@ -8,13 +8,9 @@
           data-bs-toggle="collapse"
           :data-bs-target="'#s' + sprint.id"
         >
-          Sprint # {{ index + 1 }}
+          S{{ index + 1 }}
+          {{ sprint.name }}
         </h4>
-        <h6>{{ sprint.name }}</h6>
-        <i
-          class="mdi mdi-trash-can-outline mdi-24px selectable"
-          @click="removeSprint(project.id, sprint.id)"
-        ></i>
         <!-- NOTE tasks from Appstate computed -->
         <!-- {{tasks.weight}} -->
         <i class="mdi mdi-weight mdi-48px mb-4 ms-5 gradient-text2"></i>
@@ -45,6 +41,15 @@
         :key="task.id"
       >
         <SingleTask :task="task" />
+        <div class="row">
+          <div class="col text-end text-danger">
+            Delete S{{ index + 1 }}
+            <i
+              class="mdi mdi-trash-can-outline mdi-24px selectable"
+              @click="removeSprint(project.id, sprint.id)"
+            ></i>
+          </div>
+        </div>
       </div>
     </div>
   </div>
