@@ -47,7 +47,7 @@
         <SingleSprint :sprint="sprint" :index="index" />
       </div>
       <ProjectsComponent />
-      <NotesComponent />
+      <NotesComponent :note="notes" />
     </div>
   </div>
   <Modal id="ProjectForm">
@@ -77,6 +77,7 @@ import Pop from "../utils/Pop"
 import { projectsService } from "../services/ProjectsService"
 import { useRoute } from "vue-router"
 import { tasksService } from "../services/TasksService"
+import { notesService } from "../services/NotesService"
 export default {
   setup() {
     const route = useRoute()
@@ -85,6 +86,7 @@ export default {
         if (route.params.id) {
           await projectsService.getProjectById(route.params.id)
           await tasksService.getTasksByProjectId(route.params.id)
+          await notesService.getNotesForProject(route.params.id)
         }
       } catch (error) {
         logger.error(error)
@@ -95,7 +97,8 @@ export default {
       projects: computed(() => AppState.projects),
       activeProject: computed(() => AppState.activeProject),
       account: computed(() => AppState.account),
-      sprints: computed(() => AppState.sprints)
+      sprints: computed(() => AppState.sprints),
+      notes: computed(() => AppState.notes)
     }
   }
 }

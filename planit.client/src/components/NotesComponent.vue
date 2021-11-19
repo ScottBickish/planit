@@ -30,18 +30,15 @@
                   type="text"
                   id="note"
                   placeholder="Say something..."
-                /><button
-                  type="submit"
-                  class="gradient rounded"
-                  @click="closeCanvas()"
-                >
+                /><button type="submit" class="gradient rounded">
+                  <!-- @click="closeCanvas()" -->
                   <i class="mdi mdi-send text-light"></i>
                 </button>
               </form>
             </div>
           </div>
-          <div v-for="note in notes" :key="note.id">
-            <SingleNote :note="note" />
+          <div v-for="n in notes" :key="n.id">
+            <SingleNote :note="n" />
           </div>
         </div>
       </div>
@@ -57,9 +54,12 @@ import Pop from "../utils/Pop"
 import { notesService } from "../services/NotesService"
 import { AppState } from "../AppState"
 import { Offcanvas } from "bootstrap"
+import { watchEffect } from "@vue/runtime-core"
 export default {
   props: {
-    note: Object
+    note: {
+      type: Array
+    }
   },
 
   setup(props) {
@@ -68,6 +68,7 @@ export default {
     return {
       route,
       note,
+      notes: computed(() => AppState.notes.filter(n => n.activeTaskId == props.note.id)),
       activeTaskId: computed(() => AppState.activeTaskId),
       async createNote() {
         try {
