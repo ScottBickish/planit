@@ -70,7 +70,7 @@ export default {
     return {
       route,
       note,
-      notes: computed(() => AppState.notes.filter(n => n.activeTaskId == props.note.id)),
+      notes: computed(() => AppState.notes.filter(n => n.taskId == AppState.activeTaskId)),
       activeTaskId: computed(() => AppState.activeTaskId),
       async createNote() {
         try {
