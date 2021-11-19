@@ -44,15 +44,18 @@
       >
         <SingleTask :task="task" />
       </div>
-        <div class="row">
-          <div class="col text-end text-danger">
-            Delete S{{ index + 1 }}
-            <i
-              class="mdi mdi-trash-can-outline mdi-24px selectable"
-              @click="removeSprint(project.id, sprint.id)"
-            ></i>
-          </div>
+      <div class="row">
+        <div
+          class="col text-end text-danger"
+          v-if="account.id === sprint.creatorId"
+        >
+          Delete S{{ index + 1 }}
+          <i
+            class="mdi mdi-trash-can-outline mdi-24px selectable"
+            @click="removeSprint(project.id, sprint.id)"
+          ></i>
         </div>
+      </div>
     </div>
   </div>
 </template>
@@ -72,6 +75,7 @@ export default {
   },
   setup(props) {
     return {
+      account: computed(() => AppState.account),
       async removeSprint(projectId, sprintId) {
         try {
           if (await Pop.confirm('Are you sure you want to delete this sprint?')) {

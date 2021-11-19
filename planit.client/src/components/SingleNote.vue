@@ -5,6 +5,7 @@
         <div class="col text-end">
           <i
             class="mdi mdi-trash-can-outline mdi-24px selectable"
+            v-if="account.id === note.creatorId"
             @click="removeNote(note)"
           ></i>
         </div>

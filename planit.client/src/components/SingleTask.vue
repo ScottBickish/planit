@@ -12,6 +12,7 @@
       <h5 class="m-0">{{ task.name }}</h5>
       <i
         class="mdi mdi-trash-can-outline mdi-24px selectable ms-4"
+        v-if="account.id === task.creatorId"
         @click="removeTask(task)"
       ></i>
     </div>
@@ -56,6 +57,7 @@ export default {
   setup(props) {
     const route = useRoute()
     return {
+      account: computed(() => AppState.account),
       setactiveTask() {
         AppState.activeTaskId = props.task.id
       },
