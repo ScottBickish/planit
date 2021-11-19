@@ -80,6 +80,7 @@ import { logger } from "../utils/Logger"
 import Pop from "../utils/Pop"
 import { AppState } from "../AppState"
 import { useRoute } from "vue-router"
+import { notesService } from "../services/NotesService"
 export default {
   props: {
     task: Object
