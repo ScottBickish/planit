@@ -1,6 +1,6 @@
 <template>
   <div class="row m-2 border border-dark p-2 align-items-center">
-    <div class="col d-flex justify-content-start align-items-center">
+    <div class="col d-flex justify-content-start align-items-center w-100">
       <input
         v-model="task.isComplete"
         class="form-check-input me-4 selectable"
@@ -18,27 +18,29 @@
         title="Delete"
       ></i>
     </div>
-    <div class="row">
-      <div class="col-1">
-        <p>
-          <i
-            title="Open Task Notes"
-            class="
-              mdi mdi-comment-text-multiple-outline mdi-24px
-              gradient-text
-              selectable
-            "
-            data-bs-toggle="offcanvas"
-            href="#notes-offcanvas"
-            @click="setactiveTask()"
-          ></i>
-        </p>
-      </div>
-      <div class="col-1">
-        <p>
-          {{ task.weight }}
-          <i class="mdi mdi-weight mdi-24px gradient-text2"></i>
-        </p>
+    <div class="row justify-content-between">
+      <div class="col-4 d-flex">
+        <div class="m-2">
+          <p>
+            <i
+              title="Open Task Notes"
+              class="
+                mdi mdi-comment-text-multiple-outline mdi-24px
+                gradient-text
+                selectable
+              "
+              data-bs-toggle="offcanvas"
+              href="#notes-offcanvas"
+              @click="setactiveTask()"
+            ></i>
+          </p>
+        </div>
+        <div class="m-2">
+          <p>
+            {{ task.weight }}
+            <i class="mdi mdi-weight mdi-24px gradient-text2"></i>
+          </p>
+        </div>
       </div>
 
       <div class="dropdown col-md-5">

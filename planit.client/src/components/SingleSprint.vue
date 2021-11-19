@@ -34,7 +34,7 @@
         <h4>
           <!-- NOTE need tasks in AppState and computed -->
           <!-- {{tasks.isCompleted.length}} / {{tasks.length}} -->
-          0/0 Tasks Complete
+          {{ completedTasks }}/{{ tasks.length }} Tasks Complete
         </h4>
       </div>
       <div
@@ -77,6 +77,7 @@ export default {
   },
   setup(props) {
     return {
+
       account: computed(() => AppState.account),
       async removeSprint(projectId, sprintId) {
         try {
@@ -91,6 +92,7 @@ export default {
       },
       project: computed(() => AppState.activeProject),
       tasks: computed(() => AppState.tasks.filter(t => t.sprintId == props.sprint.id)),
+      completedTasks: computed(() => AppState.tasks.filter(t => t.sprintId == props.sprint.id && t.isComplete).length),
       totalWeight: computed(() => {
         let weight = 0
         AppState.tasks.forEach(t => {

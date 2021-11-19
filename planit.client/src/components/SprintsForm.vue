@@ -41,7 +41,6 @@ export default {
       sprint,
       async createSprint() {
         try {
-          logger.log(sprint.value)
           await sprintsService.createSprint(route.params.id, sprint.value)
           Modal.getOrCreateInstance(
             document.getElementById("SprintsForm")

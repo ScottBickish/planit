@@ -21,7 +21,6 @@ class TasksService {
   async toggleCheckbox(pId, task) {
     task.isComplete = !task.isComplete
     const res = await api.put(`api/projects/${pId}/tasks/${task.id}`, task)
-    logger.log(res.data)
 
   }
   async moveSprint(task, sprintId){

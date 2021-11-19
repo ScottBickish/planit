@@ -8,18 +8,14 @@ class ProjectsService {
     AppState.projects = [...AppState.projects, res.data]
     // NOTE
     AppState.activeProject = res.data
-    // logger.log(res.data)
-    logger.log(AppState.account)
   }
 
   async getAllProjects() {
     const res = await api.get('api/projects')
-    // logger.log(res.data)
     AppState.projects = res.data
   }
 
   async getProjectById(id) {
-    // logger.log(console.trace())
     const res = await api.get('api/projects/' + id)
     AppState.activeProject = res.data
   }

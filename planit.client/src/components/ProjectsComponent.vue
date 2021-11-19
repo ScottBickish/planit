@@ -38,7 +38,7 @@
           </div>
         </div>
         <div class="text-end">
-          <button
+          <!-- <button
             class="btn rounded mx-3 my-2 gradient"
             data-bs-toggle="modal"
             data-bs-target="#ProjectForm"
@@ -46,7 +46,7 @@
             @click="closeCanvas()"
           >
             Create
-          </button>
+          </button> -->
         </div>
       </div>
     </form>
@@ -66,7 +66,6 @@ import { useRouter } from "vue-router"
 export default {
   // props: {projects: {type: Object, required: true}},
   setup() {
-    // logger.log(AppState.projects)
     const router = useRouter()
     return {
       closeCanvas() {

@@ -6,7 +6,6 @@ import { api } from "./AxiosService"
 class NotesService {
   async createNote(pId, note){
     const res = await api.post(`api/projects/${pId}/notes`, note)
-    logger.log(res.data)
     AppState.notes = [...AppState.notes, res.data]
   }
   // NOTE need a task id on the body like the task for the sprints
