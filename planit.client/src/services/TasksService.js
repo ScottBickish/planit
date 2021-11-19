@@ -1,6 +1,7 @@
 import { AppState } from "../AppState"
 import { logger } from "../utils/Logger"
 import { api } from "./AxiosService"
+import { sprintsService } from "./SprintsService"
 
 
 class TasksService {
@@ -21,6 +22,16 @@ class TasksService {
     task.isComplete = !task.isComplete
     const res = await api.put(`api/projects/${pId}/tasks/${task.id}`, task)
     logger.log(res.data)
+
+  }
+  async moveSprint(task, sprintId){
+    // NOTE edit task. re assign it to the new sprint id.
+    task.sprintId = sprintId 
+    // NOTE send the edited task object to the api. 
+    await api.put(`api/projects/${task.projectId}/tasks/${task.id}`, task)
+    // NOTE re get the tasks to update the page 
+    await this.getTasksByProjectId(task.projectId)
+    
 
   }
 

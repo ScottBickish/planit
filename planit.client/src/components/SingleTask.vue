@@ -21,7 +21,6 @@
     <div class="row">
       <div class="col-1">
         <p>
-          Nct
           <i
             title="Open Task Notes"
             class="
@@ -40,6 +39,32 @@
           {{ task.weight }}
           <i class="mdi mdi-weight mdi-24px gradient-text2"></i>
         </p>
+      </div>
+
+      <div class="dropdown col-md-5">
+        <button
+          title="Move Task"
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Move This Task
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <!-- NOTE itterates over all the sprints from computed. at click of an individual list item, send the task object and the  NEW sprint id. -->
+          <li
+            v-for="sprint in sprints"
+            :key="sprint.id"
+            class="selectable"
+            title="Move to"
+          >
+            <a class="dropdown-item" @click="moveSprint(task, sprint.id)">{{
+              sprint.name
+            }}</a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -60,6 +85,15 @@ export default {
   setup(props) {
     const route = useRoute()
     return {
+      async moveSprint(task, sprintId) {
+        try {
+          await tasksService.moveSprint(task, sprintId)
+        } catch (error) {
+          logger.error(error)
+          Pop.toast('error')
+        }
+      },
+      sprints: computed(() => AppState.sprints),
       account: computed(() => AppState.account),
       setactiveTask() {
         AppState.activeTaskId = props.task.id
