@@ -22,7 +22,7 @@
         </div>
         <div class="offcanvas-body container-fluid scrollbar-ripe-malinka">
           <div class="row align-items-center">
-            <div style="display: inline" class="col">
+            <div class="col">
               <form class="" @submit.prevent="createNote()">
                 <input
                   v-model="note.body"
@@ -37,8 +37,10 @@
               </form>
             </div>
           </div>
-          <div v-for="n in notes" :key="n.id">
-            <SingleNote :note="n" />
+          <div class="row" v-for="n in notes" :key="n.id">
+            <div class="col m-2">
+              <SingleNote :note="n" />
+            </div>
           </div>
         </div>
       </div>

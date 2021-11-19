@@ -1,6 +1,6 @@
 <template>
-  <div class="row" v-if="note.creator">
-    <div class="col-md-10 card-sprints">
+  <div class="row justify-content-center" v-if="note.creator">
+    <div class="col-md-10 card-sprints m-3">
       <div class="row">
         <div class="col text-end">
           <i
@@ -11,12 +11,12 @@
       </div>
       <div class="row">
         <div class="col">
-          <img class="img-container" :src="note.creator.picture" alt="" />
+          <img class="img-container me-3" :src="note.creator.picture" alt="" />
           {{ note.creator.name }}
         </div>
       </div>
       <div class="row">
-        <div class="col">
+        <div class="col my-3">
           <h6>
             {{ note.body }}
           </h6>

@@ -14,8 +14,8 @@
         <!-- NOTE tasks from Appstate computed -->
         <!-- {{tasks.weight}} -->
         <!-- {{task.weight}} -->
-        {{ totalWeight }}
-        <i class="mdi mdi-weight mdi-48px mb-4 ms-5 gradient-text2"></i>
+        <h5>{{ totalWeight }}</h5>
+        <i class="mdi mdi-weight mdi-48px mb-4 gradient-text2"></i>
       </div>
       <div class="col-md-2 text-end">
         <button
