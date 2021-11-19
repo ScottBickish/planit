@@ -14,10 +14,10 @@ class NotesService {
     const res = await api.get(`api/projects/${pId}/notes`)
     AppState.notes = res.data
   }
-  async removeNote(pId, nId){
-    await api.delete(`api/projects/${pId}/notes/${nId}`)
+  async removeNote(note){
+    await api.delete(`api/projects/${note.projectId}/notes/${note.id}`)
     AppState.notes = AppState.notes.filter(n => n.id !== AppState.notes.id)
-    this.getNotesForProject(pId)
+    this.getNotesForProject(note.projectId)
     
   }
 
