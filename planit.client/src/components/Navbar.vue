@@ -51,6 +51,15 @@
               title="Manage Account / Logout"
               >{{ account.name }}</span
             >
+            <img
+              title="Edit Profile"
+              :src="user.picture"
+              alt="user photo"
+              height="40"
+              class="ms-3 img-container selectable"
+              data-bs-toggle="modal"
+              data-bs-target="#ProfileForm"
+            />
           </div>
           <div
             class="dropdown-menu p-0 list-group w-100"
@@ -74,15 +83,6 @@
             </div>
           </div>
         </div>
-        <img
-          title="Edit Profile"
-          :src="user.picture"
-          alt="user photo"
-          height="40"
-          class="ms-3 img-container selectable"
-          data-bs-toggle="modal"
-          data-bs-target="#ProfileForm"
-        />
       </span>
     </div>
   </nav>
