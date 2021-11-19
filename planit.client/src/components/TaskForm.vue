@@ -19,7 +19,7 @@
       v-model="task.weight"
     />
 
-    <button type="submit">Submit</button>
+    <button type="submit" title="Submit">Submit</button>
   </form>
 </template>
 

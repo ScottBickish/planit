@@ -52,7 +52,7 @@
       </div>
       <div class="row" v-for="p in projects" :key="p.id">
         <div class="col-4 my-2">
-          <h2>
+          <h2 title="Open Project">
             <router-link :to="{ name: 'ProjectPage', params: { id: p.id } }">
               {{ p.name }}
             </router-link>

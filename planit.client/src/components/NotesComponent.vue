@@ -9,6 +9,7 @@
       >
         <div class="offcanvas-header">
           <button
+            title="Close"
             type="button"
             class="btn-close text-reset"
             data-bs-dismiss="offcanvas"
@@ -30,7 +31,7 @@
                   type="text"
                   id="note"
                   placeholder="Say something..."
-                /><button type="submit" class="gradient rounded">
+                /><button type="submit" title="Submit" class="gradient rounded">
                   <!-- @click="closeCanvas()" -->
                   <i class="mdi mdi-send text-light"></i>
                 </button>

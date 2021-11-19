@@ -3,17 +3,19 @@
     <div class="col d-flex justify-content-start align-items-center">
       <input
         v-model="task.isComplete"
-        class="form-check-input me-4"
+        class="form-check-input me-4 selectable"
         type="checkbox"
         name=""
         id="chkbx"
         @click="toggleCheckbox()"
+        title="Click to Complete"
       />
       <h5 class="m-0">{{ task.name }}</h5>
       <i
         class="mdi mdi-trash-can-outline mdi-24px selectable ms-4"
         v-if="account.id === task.creatorId"
         @click="removeTask(task)"
+        title="Delete"
       ></i>
     </div>
     <div class="row">
@@ -21,6 +23,7 @@
         <p>
           Nct
           <i
+            title="Open Task Notes"
             class="
               mdi mdi-comment-text-multiple-outline mdi-24px
               gradient-text

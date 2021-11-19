@@ -6,6 +6,7 @@
         data-bs-toggle="offcanvas"
         href="#projects-offcanvas"
         style="font-size: 45px"
+        title="Open All Projects"
       >
         P
       </button>

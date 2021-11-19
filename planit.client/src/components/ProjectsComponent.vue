@@ -13,6 +13,7 @@
           </h4>
           <button
             type="button"
+            title="Close"
             class="btn-close text-reset"
             data-bs-dismiss="offcanvas"
             aria-label="Close"
@@ -20,7 +21,7 @@
         </div>
         <div class="offcanvas-body container-fluid scrollbar-ripe-malinka">
           <div class="row align-items-center" v-for="p in projects" :key="p.id">
-            <div class="me-auto col-8 selectable">
+            <div class="me-auto col-8 selectable" title="Open Project">
               <router-link
                 :to="{ name: 'ProjectPage', params: { id: p.id } }"
                 @click="closeCanvas()"
@@ -28,7 +29,7 @@
                 {{ p.name }}
               </router-link>
             </div>
-            <div class="col-2 text-center" v-if="account.id === p.creatorId">
+            <div class="col-2" v-if="account.id === p.creatorId" title="Delete">
               <i
                 class="mdi mdi-trash-can-outline mdi-24px selectable"
                 @click="removeProject(p.id)"
@@ -41,7 +42,7 @@
             class="btn rounded mx-3 my-2 gradient"
             data-bs-toggle="modal"
             data-bs-target="#ProjectForm"
-            title="create-project"
+            title="Create Project"
             @click="closeCanvas()"
           >
             Create

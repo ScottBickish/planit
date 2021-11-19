@@ -5,6 +5,7 @@
         <i class="mdi mdi-rhombus-outline mdi-48px me-3 gradient-text2"></i>
         <h4
           class="me-5 selectable"
+          title="Expand Project Tasks"
           data-bs-toggle="collapse"
           :data-bs-target="'#s' + sprint.id"
         >
@@ -23,7 +24,7 @@
           class="btn rounded btn-outline-custom gradient-text px-4"
           data-bs-toggle="modal"
           data-bs-target="#TaskForm"
-          title="add-task"
+          title="Add Task"
           @click="setActiveSprint(sprint)"
         >
           Add Task <i class="ms-2 mdi mdi-plus-thick mdi-16px"></i>
@@ -52,6 +53,7 @@
           Delete S{{ index + 1 }}
           <i
             class="mdi mdi-trash-can-outline mdi-24px selectable"
+            title="Delete"
             @click="removeSprint(project.id, sprint.id)"
           ></i>
         </div>

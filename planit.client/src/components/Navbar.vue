@@ -1,13 +1,16 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-light px-3 elevation-3">
     <router-link class="navbar-brand" :to="{ name: 'Home' }">
-      <div class="d-flex flex-row align-items-center text-dark site-font">
+      <div
+        title="Go to Home"
+        class="d-flex flex-row align-items-center text-dark site-font"
+      >
         <img src="../assets/img/PlanitLogo.PNG" alt="" />
         <h1 class="gradient-text mt-3">PlanIt</h1>
       </div>
     </router-link>
     <button
-      class="navbar-toggler"
+      class="navbar-toggler black"
       type="button"
       data-bs-toggle="collapse"
       data-bs-target="#navbarText"
@@ -45,6 +48,7 @@
             <span
               style="font-size: 23px"
               class="mx-3 text-dark lighten-30 site-font gradient-text"
+              title="Manage Account / Logout"
               >{{ account.name }}</span
             >
           </div>
@@ -71,13 +75,14 @@
           </div>
         </div>
         <img
-            :src="user.picture"
-            alt="user photo"
-            height="40"
-            class="ms-3 img-container selectable"
-            data-bs-toggle="modal"
-            data-bs-target="#ProfileForm"
-          />
+          title="Edit Profile"
+          :src="user.picture"
+          alt="user photo"
+          height="40"
+          class="ms-3 img-container selectable"
+          data-bs-toggle="modal"
+          data-bs-target="#ProfileForm"
+        />
       </span>
     </div>
   </nav>
@@ -131,5 +136,8 @@ a:hover {
   border-bottom: 2px solid var(--bs-success);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+.black {
+  background-color: #9a19dd;
 }
 </style>

@@ -10,7 +10,7 @@
         class="form-control"
         v-model="sprint.name"
       />
-      <button type="submit">Submit</button>
+      <button type="submit" title="Submit">Submit</button>
     </form>
   </div>
 </template>

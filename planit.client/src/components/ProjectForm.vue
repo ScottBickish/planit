@@ -26,11 +26,16 @@
       </div>
       <div class="row">
         <div class="col text-end">
-          <button type="button" class="btn rounded bg-none ms-2 px-5">
+          <button
+            title="Cancel"
+            type="button"
+            class="btn rounded bg-none ms-2 px-5"
+          >
             Cancel
           </button>
           <button
             type="submit"
+            title="Submit"
             class="btn rounded gradient ms-2 px-5 text-light"
           >
             Submit
