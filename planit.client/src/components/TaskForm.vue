@@ -49,7 +49,7 @@ export default {
           Modal.getOrCreateInstance(
             document.getElementById("TaskForm")
           ).hide();
-          task.value = {}
+          task.value = { sprintId: activeSprintId, isComplete: false }
         } catch (error) {
           logger.error(error)
           Pop.toast('error')
